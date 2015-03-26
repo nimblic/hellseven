@@ -1,0 +1,29 @@
+{
+  "name": "hellseven",
+  "version": "0.0.0",
+  "description": "HL7 message building/validation",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "babel -d lib src",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Nimblic/hellseven.git"
+  },
+  "keywords": [
+    "hl7",
+    "health",
+    "level",
+    "seven"
+  ],
+  "author": "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/Nimblic/hellseven/issues"
+  },
+  "homepage": "https://github.com/Nimblic/hellseven",
+  "devDependencies": {
+    "babel": "^4.7.16"
+  }
+}
