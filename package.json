@@ -1,6 +1,6 @@
 {
   "name": "hellseven",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "HL7 message building/validation",
   "main": "lib/index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "seven"
   ],
   "author": "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
-  "license": "BSD",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Nimblic/hellseven/issues"
   },
