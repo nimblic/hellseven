@@ -1,7 +1,9 @@
 import Message from './message';
 import Segment from './segment';
+import Terser from './terser';
 
-export default {
+export {
   Message,
   Segment,
+  Terser,
 }
