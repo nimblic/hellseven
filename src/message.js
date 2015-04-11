@@ -59,6 +59,12 @@ export default class Message {
     return [this.name, this.segments.map(e => e.buildObject())];
   }
 
+  compile() {
+    console.log("Message.compile");
+
+    return this.segments.map(e => e.compile()).join("\n");
+  }
+
   static load(input) {
     let segments = input.message.map(Segment.load);
 

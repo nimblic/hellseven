@@ -90,6 +90,10 @@ export default class Field {
   build() {
     console.log("Field.build");
 
+    if (!defs.Component[this.type]) {
+      return this.values[0].build();
+    }
+
     let a = [];
 
     for (let i=0;i<defs.Field[this.id][1].length;i++) {
@@ -112,6 +116,34 @@ export default class Field {
       i[this.values[v].name.toLowerCase()] = this.values[v].buildObject();
       return i;
     }, {});
+  }
+
+  compile() {
+    console.log("Field.compile");
+
+    if (!defs.Component[this.type]) {
+      return this.values[0].compile();
+    }
+
+    let a = [];
+
+    for (let i=0;i<defs.Component[this.type][1].length;i++) {
+      if (this.values[i]) {
+        a.push(this.values[i].compile());
+      } else {
+        a.push("");
+      }
+    }
+
+    while (true) {
+      if (a[a.length-1] !== "") {
+        break;
+      }
+
+      a = a.slice(0, a.length-1);
+    }
+
+    return a.join("^");
   }
 
   static load(id, input) {

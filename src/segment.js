@@ -104,9 +104,9 @@ export default class Segment {
   build() {
     console.log("Segment.build");
 
-    let a = [];
+    let a = [this.name];
 
-    for (let i=0;i<defs.Segment[this.name][1].length;i++) {
+    for (let i=1;i<defs.Segment[this.name][1].length;i++) {
       if (Object.hasOwnProperty.call(this.fields, i)) {
         a.push(this.fields[i].map(e => e.build()));
       } else {
@@ -135,6 +135,34 @@ export default class Segment {
     }
 
     return [this.name, a];
+  }
+
+  compile() {
+    console.log("Segment.compile");
+
+    let a = [this.name];
+
+    for (let i=1;i<defs.Segment[this.name][1].length;i++) {
+      if (this.name === "MSH" && i === 1) {
+        continue;
+      }
+
+      if (Object.hasOwnProperty.call(this.fields, i)) {
+        a.push(this.fields[i].map(e => e.compile()).join("~"));
+      } else {
+        a.push("");
+      }
+    }
+
+    while (true) {
+      if (a[a.length-1] !== "") {
+        break;
+      }
+
+      a = a.slice(0, a.length-1);
+    }
+
+    return a.join("|");
   }
 
   static load(input) {

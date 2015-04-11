@@ -101,6 +101,36 @@ export default class Component {
     }, {});
   }
 
+  compile() {
+    console.log("Component.compile");
+
+    let cmpDef = defs.Component[this.type];
+
+    if (!cmpDef) {
+      return this.values[0];
+    }
+
+    let a = [];
+
+    for (let i=0;i<cmpDef[1].length;i++) {
+      if (Object.hasOwnProperty.call(this.values, i)) {
+        a.push(this.values[i].compile());
+      } else {
+        a.push("");
+      }
+    }
+
+    while (true) {
+      if (a[a.length-1] !== "") {
+        break;
+      }
+
+      a = a.slice(0, a.length-1);
+    }
+
+    return a.join("&");
+  }
+
   static load(type, name, input) {
     console.log("Component.load type=%s name=%s input=%j", type, name, input);
 
