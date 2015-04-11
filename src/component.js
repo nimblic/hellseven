@@ -67,6 +67,25 @@ export default class Component {
   }
 
   build() {
+    console.log("Component.build");
+
+    let cmpDef = defs.Component[this.type];
+
+    if (!cmpDef) {
+      return this.values[0];
+    }
+
+    let a = [];
+
+    for (let i=0;i<cmpDef[1].length;i++) {
+      if (Object.hasOwnProperty.call(this.values, i)) {
+        a.push(this.values[i].build());
+      } else {
+        a.push(null);
+      }
+    }
+
+    return a;
   }
 
   buildObject() {
@@ -76,9 +95,10 @@ export default class Component {
       return this.values[0];
     }
 
-    return Object.getOwnPropertyNames(this.values).reduce((i, v) => Object.assign(i, {
-      [defs.Component[cmpDef[1][v][0]][2].toLowerCase()]: this.values[v].buildObject(),
-    }), {});
+    return Object.getOwnPropertyNames(this.values).reduce((i, v) => {
+      i[defs.Component[cmpDef[1][v][0]][2].toLowerCase()] = this.values[v].buildObject();
+      return i;
+    }, {});
   }
 
   static load(type, name, input) {

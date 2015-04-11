@@ -50,6 +50,8 @@ export default class Message {
   }
 
   build() {
+    console.log("Message.build");
+
     return this.segments.map(e => e.build());
   }
 

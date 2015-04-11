@@ -88,11 +88,13 @@ export default class Field {
   }
 
   build() {
+    console.log("Field.build");
+
     let a = [];
 
     for (let i=0;i<defs.Field[this.id][1].length;i++) {
-      if (Object.hasOwnProperty.call(this.fields, i)) {
-        a.push(this.fields[i].build());
+      if (this.values[i]) {
+        a.push(this.values[i].build());
       } else {
         a.push(null);
       }
@@ -106,9 +108,10 @@ export default class Field {
       return this.values[0].buildObject();
     }
 
-    return Object.getOwnPropertyNames(this.values).reduce((i, v) => Object.assign(i, {
-      [this.values[v].name.toLowerCase()]: this.values[v].buildObject(),
-    }), {});
+    return Object.getOwnPropertyNames(this.values).reduce((i, v) => {
+      i[this.values[v].name.toLowerCase()] = this.values[v].buildObject();
+      return i;
+    }, {});
   }
 
   static load(id, input) {

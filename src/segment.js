@@ -102,11 +102,13 @@ export default class Segment {
   }
 
   build() {
+    console.log("Segment.build");
+
     let a = [];
 
     for (let i=0;i<defs.Segment[this.name][1].length;i++) {
       if (Object.hasOwnProperty.call(this.fields, i)) {
-        a.push(this.fields[i].build());
+        a.push(this.fields[i].map(e => e.build()));
       } else {
         a.push(null);
       }
