@@ -107,7 +107,11 @@ export default class Component {
     let cmpDef = defs.Component[this.type];
 
     if (!cmpDef) {
-      return this.values[0];
+      if (this.name === "ENCODING_CHARACTERS") {
+        return this.values[0] + "";
+      } else {
+        return (this.values[0] + "").replace(/([\|^~\\&])/g, "\\$1");
+      }
     }
 
     let a = [];
