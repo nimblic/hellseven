@@ -16,7 +16,7 @@ export default class Segment {
   }
 
   setObject(data) {
-    console.log("Segment.setObject data=%j", data);
+    // console.log("Segment.setObject data=%j", data);
 
     Object.getOwnPropertyNames(data).forEach(k => this.setByName(k, data[k]));
 
@@ -24,7 +24,7 @@ export default class Segment {
   }
 
   setArray(data) {
-    console.log("Segment.setArray data=%j", data);
+    // console.log("Segment.setArray data=%j", data);
 
     data.forEach((v, i) => v && i && this.setByIndex(i, v));
 
@@ -32,7 +32,7 @@ export default class Segment {
   }
 
   setByName(name, value) {
-    console.log("Segment.setByName name=%s value=%j", name, value);
+    // console.log("Segment.setByName name=%s value=%j", name, value);
 
     let segDef = defs.Segment[this.name][1];
 
@@ -56,7 +56,7 @@ export default class Segment {
   }
 
   setByIndex(index, value) {
-    console.log("Segment.setByIndex index=%d value=%j", index, value);
+    // console.log("Segment.setByIndex index=%d value=%j", index, value);
 
     if (index === 0) {
       throw new Error("can't set the first field of a segment after creation");
@@ -70,7 +70,7 @@ export default class Segment {
   }
 
   addByIndex(index, value) {
-    console.log("Segment.addByIndex index=%d value=%j", index, value);
+    // console.log("Segment.addByIndex index=%d value=%j", index, value);
 
     if (index === 0) {
       throw new Error("can't set the first field of a segment after creation");
@@ -102,7 +102,7 @@ export default class Segment {
   }
 
   build() {
-    console.log("Segment.build");
+    // console.log("Segment.build");
 
     let a = [this.name];
 
@@ -138,7 +138,7 @@ export default class Segment {
   }
 
   compile() {
-    console.log("Segment.compile");
+    // console.log("Segment.compile");
 
     let a = [this.name];
 
@@ -166,7 +166,7 @@ export default class Segment {
   }
 
   static load(input) {
-    console.log("Segment.load input=%j", input);
+    // console.log("Segment.load input=%j", input);
 
     if (typeof input !== "object" || !input.segment) {
       input = {segment: [input]};

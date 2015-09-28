@@ -18,7 +18,7 @@ export default class Component {
   }
 
   setObject(data) {
-    console.log("Component.setObject data=%j", data);
+    // console.log("Component.setObject data=%j", data);
 
     Object.getOwnPropertyNames(data).forEach(k => this.setByName(k, data[k]));
 
@@ -26,7 +26,7 @@ export default class Component {
   }
 
   setArray(data) {
-    console.log("Component.setArray data=%j", data);
+    // console.log("Component.setArray data=%j", data);
 
     data.forEach((v, i) => v && this.setByIndex(i, v));
 
@@ -34,11 +34,11 @@ export default class Component {
   }
 
   setByName(name, value) {
-    console.log("Component.setByName name=%s value=%j", name, value);
+    // console.log("Component.setByName name=%s value=%j", name, value);
   }
 
   setByIndex(index, value) {
-    console.log("Component.setByIndex index=%d value=%j", index, value);
+    // console.log("Component.setByIndex index=%d value=%j", index, value);
 
     if (typeof value === "object" && value.message_code === "ACK") {
       debugger;
@@ -47,7 +47,7 @@ export default class Component {
     if (defs.Component[this.type]) {
       let cmpTypeDef = defs.Component[this.type][1];
 
-      console.log("cmpTypeDef=%j", cmpTypeDef);
+      // console.log("cmpTypeDef=%j", cmpTypeDef);
 
       if (!cmpTypeDef[index]) {
         let options = cmpTypeDef.map(s => defs.Component[s[0]][2].toLowerCase());
@@ -67,7 +67,7 @@ export default class Component {
   }
 
   build() {
-    console.log("Component.build");
+    // console.log("Component.build");
 
     let cmpDef = defs.Component[this.type];
 
@@ -102,7 +102,7 @@ export default class Component {
   }
 
   compile() {
-    console.log("Component.compile");
+    // console.log("Component.compile");
 
     let cmpDef = defs.Component[this.type];
 
@@ -136,7 +136,7 @@ export default class Component {
   }
 
   static load(type, name, input) {
-    console.log("Component.load type=%s name=%s input=%j", type, name, input);
+    // console.log("Component.load type=%s name=%s input=%j", type, name, input);
 
     if (typeof input !== "object" || !input.component) {
       input = {component: [input]};

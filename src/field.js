@@ -23,7 +23,7 @@ export default class Field {
   }
 
   setObject(data) {
-    console.log("Field.setObject data=%j", data);
+    // console.log("Field.setObject data=%j", data);
 
     Object.getOwnPropertyNames(data).forEach(k => this.setByName(k, data[k]));
 
@@ -31,7 +31,7 @@ export default class Field {
   }
 
   setArray(data) {
-    console.log("Field.setArray data=%j", data);
+    // console.log("Field.setArray data=%j", data);
 
     data.forEach((v, i) => v && this.setByIndex(i, v));
 
@@ -39,7 +39,7 @@ export default class Field {
   }
 
   setByName(name, value) {
-    console.log("Field.setByName name=%s value=%j", name, value);
+    // console.log("Field.setByName name=%s value=%j", name, value);
 
     let fieldDef = defs.Field[this.id][1];
 
@@ -63,7 +63,7 @@ export default class Field {
   }
 
   setByIndex(index, value) {
-    console.log("Field.setByIndex index=%d value=%j", index, value);
+    // console.log("Field.setByIndex index=%d value=%j", index, value);
 
     let fieldDef = defs.Field[this.id];
 
@@ -88,7 +88,7 @@ export default class Field {
   }
 
   build() {
-    console.log("Field.build");
+    // console.log("Field.build");
 
     if (!defs.Component[this.type]) {
       return this.values[0].build();
@@ -119,7 +119,7 @@ export default class Field {
   }
 
   compile() {
-    console.log("Field.compile");
+    // console.log("Field.compile");
 
     if (!defs.Component[this.type]) {
       return this.values[0].compile();
@@ -147,7 +147,7 @@ export default class Field {
   }
 
   static load(id, input) {
-    console.log("Field.load id=%s input=%j", id, input);
+    // console.log("Field.load id=%s input=%j", id, input);
 
     if (typeof input !== "object" || !input.field) {
       input = {field: [input]};
