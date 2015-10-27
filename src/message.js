@@ -62,7 +62,7 @@ export default class Message {
   compile() {
     // console.log("Message.compile");
 
-    return this.segments.map(e => e.compile()).join("\n");
+    return this.segments.map(e => e.compile()).join(String.fromCharCode(13));
   }
 
   static load(input) {
