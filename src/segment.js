@@ -82,6 +82,12 @@ export default class Segment {
       return;
     }
 
+    let segProps = defs.Segment[this.name];
+    if (!segProps) {
+      return;
+      throw new Error(`segment ${this.name} not found; available segments are ${Object.keys(defs.Segment).sort().join(", ")}`);
+    }
+
     let segDef = defs.Segment[this.name][1];
     if (!segDef[index]) {
       let options = segDef.map(s => defs.Field[s[0]][2].toLowerCase());
@@ -119,6 +125,10 @@ export default class Segment {
 
   buildObject() {
     let a = {};
+
+    if (!defs.Segment[this.name]) {
+      return null;
+    }
 
     for (let i=0;i<defs.Segment[this.name][1].length;i++) {
       let [min, max] = defs.Segment[this.name][1][i][1];

@@ -56,7 +56,7 @@ export default class Message {
   }
 
   buildObject() {
-    return [this.name, this.segments.map(e => e.buildObject())];
+    return [this.name, this.segments.map(e => e.buildObject()).filter(e => !!e)];
   }
 
   compile() {
