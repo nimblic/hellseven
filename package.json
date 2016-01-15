@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Nimblic/hellseven.git"
+    "url": "git://github.com/nimblic/hellseven.git"
   },
   "keywords": [
     "hl7",
@@ -21,9 +21,9 @@
   "author": "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Nimblic/hellseven/issues"
+    "url": "https://github.com/nimblic/hellseven/issues"
   },
-  "homepage": "https://github.com/Nimblic/hellseven",
+  "homepage": "https://github.com/nimblic/hellseven",
   "devDependencies": {
     "babel": "^4.7.16"
   }
